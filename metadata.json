@@ -1,0 +1,6 @@
+{
+  "name": "PixelCompress",
+  "description": "Professional image compression utility using lossless Huffman coding algorithms.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
