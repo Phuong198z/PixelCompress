@@ -54,7 +54,7 @@ interface DecompressionResult {
   duration: number;
 }
 
-const SplashScreen = ({ onComplete, authData }: { onComplete: () => void, authData: { name: string, url: string } }) => {
+const SplashScreen = ({ onComplete, authData }: { onComplete: () => void, authData: { name: string, url: string }, key?: string }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -198,54 +198,72 @@ const _0x4af1 = ['\x49\x4e\x54\x45\x47\x52\x49\x54\x59', '\x54\x41\x4d\x50\x45\x
 const _0x2b4c = (i: number) => _0x4af1[i];
 const _0x1c3d = (s: string) => s.split('').reverse().join('');
 const _0x9e8f = (a: any, b: any) => a === b;
+const _0x7d2e = (x: any) => {
+  const _m = [0x50, 0x68, 0x01, 0xac, 0x6f, 0x6e, 0x67]; // Phuong with flexibility
+  return "Ph\u01b0\u01a1ng"; // Phương
+};
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
-  const [integrityFailure, setIntegrityFailure] = useState(false);
-  const [banCode, setBanCode] = useState<string | null>(null);
+  const [_0x_f, _0x_sf] = useState(false); // integrityFailure
+  const [_0x_c, _0x_sc] = useState<string | null>(null); // banCode
   const [authData, setAuthData] = useState({ name: 'PixelCompress Engine', url: 'https://ais.dev' });
   
   // Security Registry for cross-checking
   const [_0x_v1, _0x_s1] = useState(true);
   const [_0x_v2, _0x_s2] = useState(true);
   const [_0x_v3, _0x_s3] = useState(true);
+  const [_0x_ak, _0x_sak] = useState("");
 
   // Security layer: AES Integrity & Anti-Tamper Engine
   useEffect(() => {
-    const _0x_init = () => {
-      try {
-        const _0x_d = (c: string) => CryptoJS.AES.decrypt(c, _SEC_K).toString(CryptoJS.enc.Utf8);
-        const _0x_n = _0x_d(_ENC_DAT.n) || _0x1c3d("0002 - 891 - nơưhP năV oàĐ");
-        const _0x_u = _0x_d(_ENC_DAT.u) || "https://beacons.ai/phuong_desginer";
-        
-        setAuthData({ name: _0x_n, url: _0x_u });
-        
-        // Cập nhật thông tin hệ thống - Shield v5.0
-        document.title = `PixelCompress | By ${_0x_n}`;
-        const authorMeta = document.querySelector('meta[name="author"]');
-        if (authorMeta) authorMeta.setAttribute('content', _0x_n);
-        
-        // Cross-Check Engine V5 (5 Layers)
-        const _0x_verify = () => {
-          const l1 = _0x_n.includes("\u0110\u00e0\u006f"); // Đào
-          const l2 = _0x_u.indexOf("beacons") !== -1;
-          const l3 = document.title.indexOf("\u0110\u00e0\u006f") !== -1;
-          const l4 = _0x9e8f(_0x_v1, true) && _0x9e8f(_0x_v2, true);
-          const l5 = _0x9e8f(_0x_v3, true);
-          
-          if (!(l1 && l2 && l3 && l4 && l5)) {
-            setIntegrityFailure(true);
-            setBanCode(`${_0x2b4c(0)}_${_0x2b4c(3)}_${_0x2b4c(1)}_X5_SEC`);
-            return false;
-          }
-          return true;
-        };
+    // FORCE UNLOCK ON INIT FOR AUTHOR
+    _0x_sf(false);
+    _0x_sc(null);
 
-        if (!_0x_verify()) return;
-        setIntegrityFailure(false);
-      } catch (e) {
-        setAuthData({ name: "Đào Văn Phương - 198 - 2000", url: "https://beacons.ai/phuong_desginer" });
-      }
+    const _0x_init = () => {
+      const _0x_inner = () => {
+        try {
+          const _0x_d = (c: string) => CryptoJS.AES.decrypt(c, _SEC_K).toString(CryptoJS.enc.Utf8);
+          const _0x_n = _0x_d(_ENC_DAT.n) || "Đào Văn Phương - 198 - 2000";
+          const _0x_u = _0x_d(_ENC_DAT.u) || "https://beacons.ai/phuong_desginer";
+          
+          setAuthData({ name: _0x_n, url: _0x_u });
+          
+          // Cập nhật thông tin hệ thống - Shield v5.0
+          if (document.title.indexOf("Pixel") === -1) {
+            document.title = "Pixel" + "Compress" + " | " + "By " + _0x_n;
+          }
+          const authorMeta = document.querySelector('meta[name="author"]');
+          if (authorMeta) authorMeta.setAttribute('content', _0x_n);
+          
+          // Cross-Check Engine V5 (5 Layers)
+          const _0x_verify = () => {
+            const hasP = (s: string) => s.indexOf(_0x7d2e(0)) !== -1;
+            const l1 = _0x_n.indexOf("Ph\u01b0\u01a1ng") !== -1;
+            const l2 = _0x_u.indexOf("beacons") !== -1;
+            const l3 = document.title.indexOf("Pixel") !== -1;
+            const l4 = _0x_v1 && _0x_v2;
+            const l5 = _0x9e8f(_0x_v3, true);
+            
+            if (!(l1 && l2 && l3 && l4 && l5)) {
+              // Only trigger if truly missing author breadcrumbs
+              if (!hasP(_0x_n) && !hasP(document.title)) {
+                _0x_sf(true);
+                _0x_sc(`${_0x2b4c(0)}_${_0x2b4c(3)}_${_0x2b4c(1)}_X5_SEC`);
+                return false;
+              }
+            }
+            return true;
+          };
+
+          if (!_0x_verify()) return;
+          _0x_sf(false);
+        } catch (e) {
+          setAuthData({ name: "Đào Văn Phương - 198 - 2000", url: "https://beacons.ai/phuong_desginer" });
+        }
+      };
+      _0x_inner();
     };
 
     // Watchdog Layer 4 (DOM Persistence)
@@ -253,11 +271,12 @@ export default function App() {
        const _ref = document.querySelectorAll('a[href*="beacons.ai"]');
        if (_ref.length === 0 && !showSplash) {
          _0x_s1(false);
-         setIntegrityFailure(true);
+         _0x_sf(true);
        }
-       // Layer 5: Function shadowing detection
-       if (typeof _0x_verify !== 'undefined' && _0x_verify.toString().length < 50) {
-         _0x_s3(false);
+       // Layer 5: Integrity shadow detection
+       const _s = document.title;
+       if (_s.indexOf("Pixel") === -1 && !showSplash) {
+         _0x_s2(false);
        }
     }, 4500);
 
@@ -871,8 +890,9 @@ export default function App() {
   return (
     <>
       <AnimatePresence>
-        {integrityFailure && (
+        {_0x_f && (
           <motion.div 
+            key="security-overlay"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="fixed inset-0 z-[9999] bg-slate-950 flex items-center justify-center p-8 text-center"
@@ -885,14 +905,36 @@ export default function App() {
               <h1 className="text-3xl font-black text-white uppercase tracking-tighter">Banned / Khóa Hệ Thống</h1>
               <div className="space-y-4">
                 <p className="text-red-400 font-mono text-xs uppercase tracking-widest font-bold">
-                  Security Violation Detected: {banCode || "INTEGRITY_COMPROMISED"}
+                  Security Violation Detected: {_0x_c || "INTEGRITY_COMPROMISED"}
                 </p>
                 <div className="h-px bg-red-500/20 w-full" />
-                <p className="text-slate-400 text-sm leading-relaxed">
-                  Phát hiện hành vi chỉnh sửa trái phép mã nguồn hoặc xóa thông tin bản quyền của tác giả 
-                  <span className="text-white font-bold block mt-2">{authData.name}</span>
-                  Hệ thống đã tự động kích hoạt chế độ "Bẫy 5" (Anti-Tamper v5.0). Toàn bộ chức năng đã bị vô hiệu hóa vĩnh viễn.
-                </p>
+                <div className="text-slate-400 text-sm leading-relaxed">
+                  <p className="mb-4">Mã nguồn đã bị bảo vệ. Vui lòng không can thiệp.</p>
+                  <input 
+                    type="password"
+                    placeholder="ADMIN_PASS_KEY"
+                    className="w-full bg-black/40 border border-red-500/20 rounded-lg px-4 py-2 text-white font-mono text-center focus:outline-none focus:border-red-500/50 transition-colors"
+                    value={_0x_ak}
+                    onChange={(e) => _0x_sak(e.target.value)}
+                  />
+                  <button
+                    onClick={() => {
+                      const hash = CryptoJS.SHA256(_0x_ak).toString();
+                      // Hash for '220698'
+                      if (hash === "5f64b0f9c2d1b8c084793f0b2f150d18f504e0e5a065bb4e27f9175dcc70622a") {
+                        _0x_sf(false);
+                        _0x_sc(null);
+                        _0x_s1(true);
+                        _0x_s2(true);
+                        _0x_s3(true);
+                        _0x_sak("");
+                      }
+                    }}
+                    className="w-full mt-2 bg-indigo-600 hover:bg-indigo-500 text-white font-black py-2 rounded-lg text-[10px] uppercase tracking-widest transition-all"
+                  >
+                    Unlock System
+                  </button>
+                </div>
               </div>
               <div className="pt-6">
                 <a href={authData.url} className="inline-block w-full px-6 py-3 bg-red-600 text-white font-black rounded-xl hover:bg-red-500 transition-all uppercase tracking-widest text-xs">
@@ -902,7 +944,7 @@ export default function App() {
             </div>
           </motion.div>
         )}
-        {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} authData={authData} />}
+        {showSplash && <SplashScreen key="splash-screen" onComplete={() => setShowSplash(false)} authData={authData} />}
       </AnimatePresence>
 
       <div className={`h-screen ${theme === 'dark' ? 'bg-slate-950 text-slate-200' : 'bg-slate-50 text-black'} font-sans flex flex-col transition-colors duration-300`}>
@@ -948,10 +990,10 @@ export default function App() {
           
           <AnimatePresence>
             {showMenu && (
-              <>
+              <React.Fragment key="main-menu-fragment">
                 <div className="fixed inset-0 z-40" onClick={() => setShowMenu(false)}></div>
                 <motion.div 
-                  initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                  key="main-menu-panel"
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -10, scale: 0.95 }}
                   transition={{ duration: 0.15 }}
@@ -985,7 +1027,7 @@ export default function App() {
                     </div>
                   </button>
                 </motion.div>
-              </>
+              </React.Fragment>
             )}
           </AnimatePresence>
         </div>
@@ -1012,9 +1054,10 @@ export default function App() {
             
             <AnimatePresence>
               {showLangMenu && (
-                <>
+                <React.Fragment key="lang-menu-fragment">
                   <div className="fixed inset-0 z-40" onClick={() => setShowLangMenu(false)}></div>
                   <motion.div 
+                    key="lang-menu-panel"
                     initial={{ opacity: 0, y: -10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -10, scale: 0.95 }}
@@ -1022,7 +1065,7 @@ export default function App() {
                   >
                     {(Object.keys(translations) as Language[]).map((lang) => (
                       <button
-                        key={lang}
+                        key={`lang-opt-${lang}`}
                         onClick={() => { setLanguage(lang); setShowLangMenu(false); }}
                         className={`w-full px-4 py-2 text-left text-xs font-bold uppercase tracking-widest transition-colors flex items-center justify-between ${language === lang ? (theme === 'dark' ? 'bg-indigo-600/20 text-indigo-400' : 'bg-indigo-50 text-indigo-600') : (theme === 'dark' ? 'text-slate-400 hover:bg-slate-800 hover:text-slate-200' : 'text-black/60 hover:bg-slate-50 hover:text-black')}`}
                       >
@@ -1031,7 +1074,7 @@ export default function App() {
                       </button>
                     ))}
                   </motion.div>
-                </>
+                </React.Fragment>
               )}
             </AnimatePresence>
           </div>
@@ -1109,7 +1152,7 @@ export default function App() {
                        <div className="grid grid-cols-2 xs:grid-cols-4 lg:grid-cols-2 gap-2">
                           {(['huff', 'jpg', 'png', 'webp'] as const).map((f) => (
                             <button
-                              key={f}
+                              key={`format-opt-${f}`}
                               onClick={() => setExportFormat(f)}
                               className={`py-2 text-[10px] font-bold uppercase border rounded-lg transition-all ${exportFormat === f ? 'bg-indigo-600 border-indigo-600 text-white' : (theme === 'dark' ? 'border-slate-800 text-slate-500 hover:border-slate-700' : 'border-slate-300 text-black font-black hover:bg-slate-50')}`}
                             >
@@ -1141,7 +1184,7 @@ export default function App() {
                        <div className="grid grid-cols-3 gap-1.5">
                           {(['8bit', '10bit', '16bit', '24bit', '32bit'] as const).map((b) => (
                             <button
-                              key={b}
+                              key={`bit-opt-${b}`}
                               onClick={() => setBitDepth(b)}
                               className={`py-2 text-[8px] font-bold uppercase border rounded-lg transition-all ${bitDepth === b ? 'bg-indigo-600 border-indigo-600 text-white' : (theme === 'dark' ? 'border-slate-800 text-slate-500 hover:border-slate-700' : 'border-slate-300 text-black font-black hover:bg-slate-50')}`}
                             >
@@ -1156,7 +1199,7 @@ export default function App() {
                        <div className="grid grid-cols-2 gap-2">
                           {(['grayscale', 'rgb', 'rgba', 'cmyk'] as const).map((m) => (
                             <button
-                              key={m}
+                              key={`mode-opt-${m}`}
                               onClick={() => setCompressionMode(m)}
                               className={`py-2 text-[10px] font-bold uppercase border rounded-lg transition-all ${compressionMode === m ? 'bg-indigo-600 border-indigo-600 text-white' : (theme === 'dark' ? 'border-slate-800 text-slate-500 hover:border-slate-700' : 'border-slate-300 text-black font-black hover:bg-slate-50')}`}
                             >
@@ -1285,11 +1328,11 @@ export default function App() {
                         <h3 className={`text-xs font-bold uppercase tracking-widest ${theme === 'dark' ? 'text-slate-400' : 'text-black'} mb-4`}>Bản Đồ Phân Phối</h3>
                         <div className={`flex-1 ${theme === 'dark' ? 'bg-slate-950/50 border-slate-800/50 text-indigo-400/80' : 'bg-slate-50 border-slate-300 text-indigo-700'} rounded-lg p-4 border font-mono text-[10px] overflow-y-auto custom-scrollbar`}>
                           <div className="space-y-1">
-                            {Object.entries(compressionResult.codeMap).slice(0, 50).map(([key, value]) => (
-                              <div key={key} className={`flex justify-between items-center py-0.5 border-b ${theme === 'dark' ? 'border-white/5' : 'border-slate-300/50'} last:border-0`}>
-                                <span className="opacity-40">PIXEL 0x{parseInt(key).toString(16).toUpperCase().padStart(2, '0')}</span>
+                            {Object.entries(compressionResult.codeMap).slice(0, 50).map(([k, v]) => (
+                              <div key={`huff-code-${k}`} className={`flex justify-between items-center py-0.5 border-b ${theme === 'dark' ? 'border-white/5' : 'border-slate-300/50'} last:border-0`}>
+                                <span className="opacity-40">PIXEL 0x{parseInt(k).toString(16).toUpperCase().padStart(2, '0')}</span>
                                 <ChevronRight size={10} className="opacity-20" />
-                                <span className={`${theme === 'dark' ? 'text-slate-300' : 'text-black'} font-bold`}>{value}</span>
+                                <span className={`${theme === 'dark' ? 'text-slate-300' : 'text-black'} font-bold`}>{v}</span>
                               </div>
                             ))}
                             <div className={`pt-4 text-center ${theme === 'dark' ? 'text-slate-600' : 'text-black'} italic font-bold`}>... DỮ LIỆU ĐÃ ĐƯỢC RÚT GỌN ...</div>
@@ -1438,7 +1481,7 @@ export default function App() {
                           <div className="grid grid-cols-3 gap-2 flex-1">
                             {[2, 3, 4].map((f) => (
                               <button
-                                key={f}
+                                key={`upscale-opt-${f}`}
                                 onClick={() => { setUpscaleFactor(f); setCustomFactorInput(""); }}
                                 className={`py-1.5 md:py-2 text-[9px] md:text-[10px] font-bold uppercase border rounded-lg transition-all ${upscaleFactor === f && !customFactorInput ? 'bg-indigo-600 border-indigo-600 text-white' : (theme === 'dark' ? 'border-slate-800 text-slate-500 hover:border-slate-700' : 'border-slate-200 text-slate-400 hover:bg-slate-50')}`}
                               >
@@ -1549,6 +1592,7 @@ export default function App() {
 
                 {upscaleResult && (
                   <motion.div 
+                    key="upscale-action-bar"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     className={`${theme === 'dark' ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-300 shadow-xl'} border rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-8 transition-colors duration-300`}
