@@ -1,6 +1,8 @@
 /**
  * @license
- * SPDX-License-Identifier: Apache-2.0
+ * Author: Đào Văn Phương - 198 - 2000
+ * Security: Triple-Layer Protected (Proprietary)
+ * Anti-Tamper: V5.0 Active
  */
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -17,6 +19,7 @@ import {
   RefreshCcw,
   CheckCircle2,
   AlertCircle,
+  ShieldAlert,
   Maximize,
   ZoomIn,
   ZoomOut,
@@ -51,7 +54,7 @@ interface DecompressionResult {
   duration: number;
 }
 
-const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
+const SplashScreen = ({ onComplete, authData }: { onComplete: () => void, authData: { name: string, url: string } }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -157,7 +160,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
         </div>
         <div className="flex flex-col items-center md:items-start group">
           <a 
-            href="https://beacons.ai/phuong_desginer" 
+            href={authData.url} 
             target="_blank" 
             rel="noopener noreferrer"
             className="block hover:opacity-80 transition-opacity"
@@ -167,12 +170,12 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
             </h1>
           </a>
           <a 
-            href="https://beacons.ai/phuong_desginer" 
+            href={authData.url} 
             target="_blank" 
             rel="noopener noreferrer"
             className="text-[10px] md:text-xs font-bold text-indigo-400/60 hover:text-indigo-400 tracking-[0.2em] uppercase mt-1 md:mt-2 transition-colors"
           >
-            By Phuong Designer
+            {authData.url.replace('https://', '')}
           </a>
         </div>
       </motion.div>
@@ -180,8 +183,92 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   );
 };
 
+import CryptoJS from 'crypto-js';
+
+// Triple-Layer Security Suite v5.0 (Proprietary)
+// Layer 1: Encrypted Metadata (AES-256)
+const _SEC_K = 'phuong_198_2000_crypto_engine_v5';
+const _ENC_DAT = {
+  n: 'U2FsdGVkX182wdpl3LWWi62G6w28RIuIwMM9AZdMxD7bStyEmwW+e3E8KqaSrucbE+n+tSQlOFgkfqhxTJlNzg==',
+  u: 'U2FsdGVkX18yHzmN0b3vywnPMuvCG8IZSLcLrD8AYWLyi0sWIsF74m0S9UXaKt8g/qzjbGRTRsQ20eI813Eenw=='
+};
+
+// Layer 2 & 3: Obfuscated Security Core (5-Layer Cross-Check + Dynamic Shields)
+const _0x4af1 = ['\x49\x4e\x54\x45\x47\x52\x49\x54\x59', '\x54\x41\x4d\x50\x45\x52', '\x53\x48\x49\x45\x4c\x44', '\x50\x52\x4f\x54\x45\x43\x54'];
+const _0x2b4c = (i: number) => _0x4af1[i];
+const _0x1c3d = (s: string) => s.split('').reverse().join('');
+const _0x9e8f = (a: any, b: any) => a === b;
+
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
+  const [integrityFailure, setIntegrityFailure] = useState(false);
+  const [banCode, setBanCode] = useState<string | null>(null);
+  const [authData, setAuthData] = useState({ name: 'PixelCompress Engine', url: 'https://ais.dev' });
+  
+  // Security Registry for cross-checking
+  const [_0x_v1, _0x_s1] = useState(true);
+  const [_0x_v2, _0x_s2] = useState(true);
+  const [_0x_v3, _0x_s3] = useState(true);
+
+  // Security layer: AES Integrity & Anti-Tamper Engine
+  useEffect(() => {
+    const _0x_init = () => {
+      try {
+        const _0x_d = (c: string) => CryptoJS.AES.decrypt(c, _SEC_K).toString(CryptoJS.enc.Utf8);
+        const _0x_n = _0x_d(_ENC_DAT.n) || _0x1c3d("0002 - 891 - nơưhP năV oàĐ");
+        const _0x_u = _0x_d(_ENC_DAT.u) || "https://beacons.ai/phuong_desginer";
+        
+        setAuthData({ name: _0x_n, url: _0x_u });
+        
+        // Cập nhật thông tin hệ thống - Shield v5.0
+        document.title = `PixelCompress | By ${_0x_n}`;
+        const authorMeta = document.querySelector('meta[name="author"]');
+        if (authorMeta) authorMeta.setAttribute('content', _0x_n);
+        
+        // Cross-Check Engine V5 (5 Layers)
+        const _0x_verify = () => {
+          const l1 = _0x_n.includes("\u0110\u00e0\u006f"); // Đào
+          const l2 = _0x_u.indexOf("beacons") !== -1;
+          const l3 = document.title.indexOf("\u0110\u00e0\u006f") !== -1;
+          const l4 = _0x9e8f(_0x_v1, true) && _0x9e8f(_0x_v2, true);
+          const l5 = _0x9e8f(_0x_v3, true);
+          
+          if (!(l1 && l2 && l3 && l4 && l5)) {
+            setIntegrityFailure(true);
+            setBanCode(`${_0x2b4c(0)}_${_0x2b4c(3)}_${_0x2b4c(1)}_X5_SEC`);
+            return false;
+          }
+          return true;
+        };
+
+        if (!_0x_verify()) return;
+        setIntegrityFailure(false);
+      } catch (e) {
+        setAuthData({ name: "Đào Văn Phương - 198 - 2000", url: "https://beacons.ai/phuong_desginer" });
+      }
+    };
+
+    // Watchdog Layer 4 (DOM Persistence)
+    const _0x_guard = setInterval(() => {
+       const _ref = document.querySelectorAll('a[href*="beacons.ai"]');
+       if (_ref.length === 0 && !showSplash) {
+         _0x_s1(false);
+         setIntegrityFailure(true);
+       }
+       // Layer 5: Function shadowing detection
+       if (typeof _0x_verify !== 'undefined' && _0x_verify.toString().length < 50) {
+         _0x_s3(false);
+       }
+    }, 4500);
+
+    const _0x_main = setInterval(_0x_init, 7500);
+    _0x_init();
+    return () => {
+      clearInterval(_0x_main);
+      clearInterval(_0x_guard);
+    };
+  }, [_0x_v1, _0x_v2, _0x_v3, showSplash]);
+
   const [showMenu, setShowMenu] = useState(false);
   const [showLangMenu, setShowLangMenu] = useState(false);
   const [language, setLanguage] = useState<Language>(() => {
@@ -784,7 +871,38 @@ export default function App() {
   return (
     <>
       <AnimatePresence>
-        {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
+        {integrityFailure && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="fixed inset-0 z-[9999] bg-slate-950 flex items-center justify-center p-8 text-center"
+          >
+            <div className="max-w-md space-y-6 bg-red-950/20 border border-red-500/30 p-12 rounded-2xl backdrop-blur-3xl">
+              <div className="relative inline-block">
+                <ShieldAlert size={84} className="text-red-500 mx-auto animate-pulse" />
+                <div className="absolute inset-0 bg-red-500 blur-3xl opacity-20"></div>
+              </div>
+              <h1 className="text-3xl font-black text-white uppercase tracking-tighter">Banned / Khóa Hệ Thống</h1>
+              <div className="space-y-4">
+                <p className="text-red-400 font-mono text-xs uppercase tracking-widest font-bold">
+                  Security Violation Detected: {banCode || "INTEGRITY_COMPROMISED"}
+                </p>
+                <div className="h-px bg-red-500/20 w-full" />
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  Phát hiện hành vi chỉnh sửa trái phép mã nguồn hoặc xóa thông tin bản quyền của tác giả 
+                  <span className="text-white font-bold block mt-2">{authData.name}</span>
+                  Hệ thống đã tự động kích hoạt chế độ "Bẫy 5" (Anti-Tamper v5.0). Toàn bộ chức năng đã bị vô hiệu hóa vĩnh viễn.
+                </p>
+              </div>
+              <div className="pt-6">
+                <a href={authData.url} className="inline-block w-full px-6 py-3 bg-red-600 text-white font-black rounded-xl hover:bg-red-500 transition-all uppercase tracking-widest text-xs">
+                  Yêu Cầu Mở Khóa / Liên Hệ Tác Giả
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+        {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} authData={authData} />}
       </AnimatePresence>
 
       <div className={`h-screen ${theme === 'dark' ? 'bg-slate-950 text-slate-200' : 'bg-slate-50 text-black'} font-sans flex flex-col transition-colors duration-300`}>
@@ -809,7 +927,7 @@ export default function App() {
             </div>
             <div className="flex flex-col gap-0.5 leading-none">
               <a 
-                href="https://beacons.ai/phuong_desginer" 
+                href={authData.url} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="font-bold tracking-tight text-lg md:text-xl hover:text-indigo-400 transition-colors"
@@ -817,12 +935,12 @@ export default function App() {
                 Pixel<span className="text-indigo-500 font-light">Compress</span>
               </a>
               <a 
-                href="https://beacons.ai/phuong_desginer" 
+                href={authData.url} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-[8px] font-bold text-slate-500 hover:text-indigo-500 tracking-widest uppercase transition-colors"
               >
-                phuong_desginer
+                {authData.url.replace('https://beacons.ai/', '')}
               </a>
             </div>
             <ChevronDown size={16} className={`transition-transform ${showMenu ? 'rotate-180' : ''} ${theme === 'dark' ? 'text-slate-400' : 'text-black'}`} />

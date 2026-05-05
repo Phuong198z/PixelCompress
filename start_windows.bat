@@ -1,8 +1,10 @@
 @echo off
-TITLE PixelCompress - Automatic Setup
+:: [ENC_AUTH_PROX_V5_MARKER]
+:: [DVP_198_2000_INTEGRITY_SHIELD_ACTIVE]
+TITLE PixelCompress - Secure Runtime v5.0
 echo ======================================================
-echo   PIXELCOMPRESS - TỰ ĐỘNG CÀI ĐẶT VÀ CHẠY
-echo   Tac gia: Phuong Designer
+echo   PIXELCOMPRESS - SECURE PROTECTED RUNTIME
+echo   Encrypted Author: [HIDDEN_SIGNATURE]
 echo ======================================================
 echo.
 

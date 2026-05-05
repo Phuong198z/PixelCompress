@@ -1,9 +1,12 @@
 #!/bin/bash
+# AUTHOR: Đào Văn Phương - 198 - 2000
+# SECURITY_LEVEL: HIGH (3-LAYER)
+# INTEGRITY_CHECK: phuong_198_2000_ok
 
 # PixelCompress - Automatic Setup (macOS/Linux)
 echo "======================================================"
 echo "  PIXELCOMPRESS - TỰ ĐỘNG CÀI ĐẶT VÀ CHẠY"
-echo "  Tac gia: Phuong Designer"
+echo "  Tác giả: Đào Văn Phương - 198 - 2000"
 echo "======================================================"
 echo
 

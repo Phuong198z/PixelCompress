@@ -35,5 +35,6 @@ Nếu bạn muốn ứng dụng chạy nhanh và ổn định hơn, hãy biên d
 Sau khi đã thực hiện `npm install` thành công một lần, bạn không cần kết nối internet nữa. Bạn chỉ cần mở terminal và chạy `npm run dev` mỗi khi muốn sử dụng.
 
 ---
-**Tác giả:** [Phuong Designer](https://beacons.ai/phuong_desginer)
+**Tác giả:** [Đào Văn Phương - 198 - 2000](https://beacons.ai/phuong_desginer)
+**Bảo mật:** Hệ thống bảo mật 3 lớp (v5.0 Ready)
 **Công nghệ:** React, Vite, Tailwind CSS, Huffman Coding.
